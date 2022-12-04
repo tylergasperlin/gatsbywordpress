@@ -9,3 +9,13 @@
     padding: 8px 16px;
     color: white;
 }
+
+.mainMenuInner{
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    width: 960px;
+    height: 100%;
+    align-items: center;
+
+}

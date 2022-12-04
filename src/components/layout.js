@@ -4,7 +4,8 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-import '../components/layout.css'
+import "../components/layout.css"
+import styles from "../components/layout.module.css"
 
 import React from "react"
 
@@ -14,7 +15,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <MainMenu />
-      {children}
+      <div className={styles.layoutWrapper}>{children}</div>
     </div>
   )
 }
