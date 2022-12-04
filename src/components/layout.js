@@ -4,6 +4,8 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
+import '../components/layout.css'
+
 import React from "react"
 
 import MainMenu from "./mainMenu"

@@ -1,5 +1,6 @@
 import { Link, StaticQuery } from "gatsby"
 import React from "react"
+import styles from '../components/mainMenu.module.css'
 
 const MainMenu = () => {
   return (
@@ -25,11 +26,11 @@ const MainMenu = () => {
       
       `}
       render={props => (
-        <div>
+        <div className={styles.menuContainer} >
             {/* {console.log(props.allWordpressWpApiMenusMenusItems.edges)} */}
           {props.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(
             item => (
-              <Link to={`/${item.object_slug}`} key={item.title}>{item.title}</Link>
+              <Link className={styles.menuItem} to={`/${item.object_slug}`} key={item.title}>{item.title}</Link>
             )
           )}
         </div>

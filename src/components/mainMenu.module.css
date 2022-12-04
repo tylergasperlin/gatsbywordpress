@@ -1,0 +1,10 @@
+
+.menuContainer{
+    background-color: tan;
+    display: flex;
+}
+
+.menuItem{
+    display: flex;
+    margin-right: 10px;
+}
