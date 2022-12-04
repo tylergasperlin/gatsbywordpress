@@ -1,10 +1,11 @@
 
 .menuContainer{
-    background-color: tan;
+    background-color: rgb(3,27,77);
     display: flex;
 }
 
 .menuItem{
     display: flex;
-    margin-right: 10px;
+    padding: 8px 16px;
+    color: white;
 }
