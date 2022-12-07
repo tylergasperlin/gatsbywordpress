@@ -5,7 +5,7 @@ import React from 'react'
  * @param {*} param0 
  * @returns 
  */
-const Post = ({pageContext}) => {
+const Portfolio = ({pageContext}) => {
   return (
     <div>
         <h1>
@@ -15,4 +15,4 @@ const Post = ({pageContext}) => {
   )
 }
 
-export default Post
+export default Portfolio
