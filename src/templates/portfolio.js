@@ -1,17 +1,23 @@
-import React from 'react'
+import React from "react"
+import Layout from "../components/layout"
+import styles from "../templates/portfolio.module.css"
 
 /**
  * This template is mapped via gatsby-node
- * @param {*} param0 
- * @returns 
+ * @param {*} param0
+ * @returns
  */
-const Portfolio = ({pageContext}) => {
+const Portfolio = ({ pageContext }) => {
   return (
-    <div>
-        <h1>
-            {pageContext.title}
-        </h1>
-    </div>
+    <Layout>
+      <h1>{pageContext.title}</h1>
+      <img
+        src={pageContext.featured_media.source_url}
+        className={styles.featureImage}
+        alt="postPicture"
+      />
+      <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
+    </Layout>
   )
 }
 

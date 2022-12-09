@@ -1,0 +1,15 @@
+.portfolioItem {
+    width: 300px;
+    border: 1px solid #efefef;
+    padding: 16px;
+    margin: 16px;
+}
+
+.portfolioImage{
+    max-width: 100%;
+}
+
+.portfolioWrapper{
+    display: flex;
+    justify-content: center;
+}
