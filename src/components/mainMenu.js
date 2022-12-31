@@ -2,6 +2,7 @@ import { Link, StaticQuery } from "gatsby"
 import React from "react"
 import styles from "../components/mainMenu.module.css"
 import SiteInfo from "./SiteInfo"
+import { graphql } from 'gatsby'
 
 const MainMenu = () => {
   return (
