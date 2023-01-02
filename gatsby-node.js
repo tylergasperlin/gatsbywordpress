@@ -47,6 +47,9 @@ exports.createPages = async ({ graphql, actions }) => {
             featured_media {
               source_url
             }
+            acf {
+              portfolio_url
+            }
           }
         }
       }
@@ -76,11 +79,6 @@ exports.createPages = async ({ graphql, actions }) => {
     // Gatsby uses Redux to manage its internal state.
     // Plugins and sites can use functions like "createPage"
     // to interact with Gatsby.
-
-    console.log('111111112111111111111111111111dded1122213213214214421')
-    console.log(edge.node)
-    console.log('111111112111111111111111111111dded1122213213214214421')
-
     createPage({
       // Each page is required to have a `path` as well
       // as a template component. The `context` is
