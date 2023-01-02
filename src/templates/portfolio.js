@@ -12,7 +12,7 @@ const Portfolio = ({ pageContext }) => {
     <Layout>
       <h1>{pageContext.title}</h1>
       <strong>Website Url: </strong>
-      <a href={pageContext.acf.portfolio_url} target='_blank'>
+      <a href={pageContext.acf.portfolio_url} target='_blank' rel="noopener noreferrer">
         {pageContext.acf.portfolio_url}
       </a>
       <img
