@@ -37,8 +37,6 @@ module.exports = {
         baseUrl: process.env.API_URL,
         protocol: process.env.API_PROTOCOL,
         minimizeDeprecationNotice: true,
-        baseUrl: "gatsby-site-course.local",
-        protocol: "http",
         hostingWPCOM: false,
         useACF: false,
         verboseOutput: false,
