@@ -94,16 +94,63 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  const createPageForEdge = async (edge, portfolioTemplate) => {
+    await createPage({
+      path: edge.node.path,
+      component: slash(portfolioTemplate),
+      context: edge.node,
+    })
+  }
+
   const portfolioTemplate = path.resolve(`./src/templates/portfolio.js`)
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
   // and we use it for the slug to preserve url structure.
   // The Post ID is prefixed with 'POST_'
   allWordpressWpPortfolio.edges.forEach(edge => {
+    createPageForEdge(edge, portfolioTemplate)
+  })
+
+  // blog posts
+  const blogPostResult = await graphql(
+    `
+      {
+        allWordpressPost {
+          edges {
+            node {
+              excerpt
+              wordpress_id
+              date
+              title
+              content
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (blogPostResult.errors) {
+    console.log(blogPostResult.errors)
+    throw new Error(blogPostResult.errors)
+  }
+
+  const posts = blogPostResult.data.allWordpressPost.edges;
+  const postsPerPage = 2;
+  const numberOfPages = Math.ceil(posts.length / postsPerPage);
+  const blogPostListTemplate = path.resolve('./src/templates/blogPostList.js')
+  console.log('!!!!!!!!!!!!!!!')
+  console.log(posts)
+  Array.from({length: numberOfPages}).forEach((page, index) => {
     createPage({
-      path: edge.node.path,
-      component: slash(portfolioTemplate),
-      context: edge.node,
+      component: slash(blogPostListTemplate),
+      path: index === 0 ? '/blog' : `/blog/${index + 1}`,
+      context: {
+        posts: posts.slice(index * postsPerPage, (index * postsPerPage) + postsPerPage),
+        numberOfPages,
+        currentPage: index +1 
+      }
     })
   })
+
 }
