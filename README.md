@@ -3,6 +3,12 @@
 1. Deployed the wordpress localhost to digital ocean
 2. Login to the ssh client: ssh root@xxx.xxx.xxx.x (ip address from digital ocean)
 
+# ENV
+.ENV FILE SHOULD CONTAIN
+
+API_URL=localhost:8000
+API_PROTOCOL=http
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">

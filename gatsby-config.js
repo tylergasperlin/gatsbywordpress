@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: '.env',
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby WordPress Starter`,
@@ -30,6 +34,8 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
+        baseUrl: process.env.API_URL,
+        protocol: process.env.API_PROTOCOL,
         minimizeDeprecationNotice: true,
         baseUrl: "gatsby-site-course.local",
         protocol: "http",
