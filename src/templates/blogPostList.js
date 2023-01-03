@@ -1,6 +1,7 @@
-import { Link } from 'gatsby'
+import { Link } from "gatsby"
 import React from "react"
 import Layout from "../components/layout"
+import styles from "../templates/blogPostList.module.css"
 
 const BlogPostList = ({ pageContext }) => {
   return (
@@ -11,13 +12,27 @@ const BlogPostList = ({ pageContext }) => {
           <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
         </div>
       ))}
-      {Array.from({length: pageContext.numberOfPages}).map((page, index) => (
-        <div key={index}>
-            <Link to={index === 0 ? '/blog' : `/blog/${index + 1}`}>
-                {index +1 }
-            </Link>
-        </div>
-      ))}
+      <div className={styles.paginationButtons}>
+        {Array.from({ length: pageContext.numberOfPages }).map(
+          (page, index) => (
+            <div
+              key={index}
+              className={`${styles.pageNumberWraper} ${
+                index + 1 === pageContext.currentPage
+                  ? styles.pageNumberSelected
+                  : styles.pageNumberUnselected
+              }`}
+            >
+              <Link
+                className={styles.pageNumber}
+                to={index === 0 ? "/blog" : `/blog/${index + 1}`}
+              >
+                {index + 1}
+              </Link>
+            </div>
+          )
+        )}
+      </div>
     </Layout>
   )
 }

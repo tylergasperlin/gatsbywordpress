@@ -1,0 +1,23 @@
+.paginationButtons {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.pageNumberWraper {
+    border: 1px solid #eee;
+}
+
+.pageNumber {
+    display:  block;
+    padding: 8px 16px;
+}
+
+.pageNumberSelected {
+    background: #eee;
+
+}
+
+.pageNumberUnselected {
+    background: 'white';
+}
