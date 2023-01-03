@@ -1,3 +1,8 @@
+# Deploy
+
+1. Deployed the wordpress localhost to digital ocean
+2. Login to the ssh client: ssh root@xxx.xxx.xxx.x (ip address from digital ocean)
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
