@@ -1,6 +1,6 @@
 import { StaticQuery, graphql, Link } from "gatsby"
 import React from "react"
-import styles from "../components/portfolioItems.module.css"
+import styles from "../components/PortfolioItems.module.css"
 
 const PortfolioItems = () => {
   return (
