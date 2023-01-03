@@ -9,7 +9,11 @@ const BlogPostList = ({ pageContext }) => {
       {pageContext.posts.map(post => (
         <div key={post.node.wordpresss_id}>
           <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} />
+          <small> {post.node.date}</small>
           <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+          <div>
+            <Link to={`/post/${post.node.slug}`}>Read More</Link>
+          </div>
         </div>
       ))}
       <div className={styles.paginationButtons}>

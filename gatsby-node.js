@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
+const _ = require('lodash');
 
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
@@ -118,11 +119,12 @@ exports.createPages = async ({ graphql, actions }) => {
         allWordpressPost {
           edges {
             node {
-              excerpt
-              wordpress_id
-              date
               title
+              excerpt
+              date(formatString: "Do MMM YYYY HH:mm")
+              wordpress_id
               content
+              slug
             }
           }
         }
@@ -135,22 +137,34 @@ exports.createPages = async ({ graphql, actions }) => {
     throw new Error(blogPostResult.errors)
   }
 
-  const posts = blogPostResult.data.allWordpressPost.edges;
-  const postsPerPage = 2;
-  const numberOfPages = Math.ceil(posts.length / postsPerPage);
-  const blogPostListTemplate = path.resolve('./src/templates/blogPostList.js')
-  console.log('!!!!!!!!!!!!!!!')
-  console.log(posts)
-  Array.from({length: numberOfPages}).forEach((page, index) => {
+  const posts = blogPostResult.data.allWordpressPost.edges
+  const postsPerPage = 2
+  const numberOfPages = Math.ceil(posts.length / postsPerPage)
+  const blogPostListTemplate = path.resolve("./src/templates/blogPostList.js")
+
+  Array.from({ length: numberOfPages }).forEach((page, index) => {
     createPage({
       component: slash(blogPostListTemplate),
-      path: index === 0 ? '/blog' : `/blog/${index + 1}`,
+      path: index === 0 ? "/blog" : `/blog/${index + 1}`,
       context: {
-        posts: posts.slice(index * postsPerPage, (index * postsPerPage) + postsPerPage),
+        posts: posts.slice(
+          index * postsPerPage,
+          index * postsPerPage + postsPerPage
+        ),
         numberOfPages,
-        currentPage: index +1 
-      }
+        currentPage: index + 1,
+      },
     })
   })
+
+  _.each(posts, (post) => {
+    createPage({
+      path: `/post/${post.node.slug}`,
+      component: slash(pageTemplate),
+      context: post.node
+    })
+  })
+
+
 
 }
